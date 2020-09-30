@@ -1,0 +1,25 @@
+[build]
+    command = "yarn build"
+    publish = "dist"
+
+[context.production.environment]
+    ELEVENTY_ENV = "production"
+
+[[headers]]
+    for = "/*"
+    [headers.values]
+        X-Frame-Options = "DENY"
+        X-XSS-Protection = "1; mode=block"
+        X-Content-Type-Options = "nosniff"
+        Referrer-Policy= "no-referrer-when-downgrade"
+
+# [[redirects]]
+#     from = "https://pragmatics.netlify.com/*"
+#     to = "https://pragmatics.dev/:thump
+#     status = 301
+#     force = true
+
+[[redirects]]
+    from = "*"
+    to = "/404"
+    status = 404
