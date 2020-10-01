@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 const pluginRss = require('@11ty/eleventy-plugin-rss');
 const pluginNavigation = require('@11ty/eleventy-navigation');
 const pluginPWA = require('@pragmatics/eleventy-plugin-pwa');
@@ -6,9 +8,13 @@ const markdownItImsize = require('markdown-it-imsize');
 const yaml = require('js-yaml');
 
 const filters = require('./utils/filters.js');
-const transforms = require('./utils/transforms.js');
-const shortcodes = require('./utils/shortcodes.js');
-const iconsprite = require('./utils/iconsprite.js');
+const transforms = require('./utils/transforms');
+const shortcodes = require('./utils/shortcodes');
+const shortcodesPaired = require('./utils/shortcodes-paired');
+const iconsprite = require('./utils/iconsprite');
+
+const contentfulPages = require('./src/data/contentful-page');
+const contentfulPosts = require('./src/data/contentful-post');
 
 const isProd = process.env.ELEVENTY_ENV === 'production';
 
@@ -34,6 +40,10 @@ module.exports = function (config) {
     config.addFilter(filterName, filters[filterName]);
   });
 
+  config.addFilter('md', function (content = '') {
+    return markdownIt(markdownItConfig).use(markdownItImsize).render(content);
+  });
+
   // Transforms
   Object.keys(transforms).forEach((transformName) => {
     config.addTransform(transformName, transforms[transformName]);
@@ -43,6 +53,15 @@ module.exports = function (config) {
   Object.keys(shortcodes).forEach((shortcodeName) => {
     config.addShortcode(shortcodeName, shortcodes[shortcodeName]);
   });
+
+  // Paired Shortcodes
+  Object.keys(shortcodesPaired).forEach((shortcodeName) => {
+    config.addPairedShortcode(shortcodeName, shortcodesPaired[shortcodeName]);
+  });
+
+  // Collections
+  config.addCollection('pages', contentfulPages);
+  config.addCollection('posts', contentfulPosts);
 
   // Icon Sprite
   config.addNunjucksAsyncShortcode('iconsprite', iconsprite);
