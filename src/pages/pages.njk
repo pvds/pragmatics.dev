@@ -1,0 +1,29 @@
+---
+pagination:
+  data: collections.pages
+  size: 1
+  alias: page
+  addAllPagesToCollections: true
+tags:
+  - navigation
+layout: base
+permalink: "{{ page.slug | slug }}/"
+eleventyComputed:
+  title: {{ page.title }}
+---
+
+<div class="page container">
+  <h1 class="page__title">{{ page.title }}</h1>
+
+  {%- for component in page.components -%}
+    {% if component.sys.contentType.sys.id == "contentBlock" %}
+      {% contentBlock {fields: component.fields, classes: 'margin-top-2'} %}
+        {{ component.fields.content | md | safe }}
+      {% endcontentBlock %}
+    {% endif %}
+  {%- endfor -%}
+
+  {% if page.slug === "posts" %}
+    {% include "post-list.njk" %}
+  {% endif %}
+</div>

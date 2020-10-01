@@ -1,11 +1,15 @@
 {
-  "name": "@pragmatics/eleventy-boilerplate",
+  "private": true,
+  "name": "@pragmatics/website",
   "version": "0.1.0",
-  "description": "A boilerplate for eleventy websites",
+  "description": "Pragmatics website",
   "homepage": "https://pragmatics.netlify.app",
   "repository": {
     "type": "git",
-    "url": "http://github.com/pvds/eleventy-boilerplate"
+    "url": "http://github.com/pvds/pragmatics.dev"
+  },
+  "bugs": {
+    "url": "http://github.com/pvds/pragmatics.dev/issues"
   },
   "keywords": [
     "pragmatics",
@@ -38,7 +42,9 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged"
+      "pre-commit": "lint-staged",
+      "pre-push": "validate-branch-name",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
     }
   },
   "lint-staged": {
@@ -46,14 +52,14 @@
     "*.js": "eslint --fix",
     "*": "prettier --write --ignore-unknown"
   },
-  "jest": {
-    "coverageDirectory": "coverage",
-    "coverageProvider": "v8",
-    "testEnvironment": "node",
-    "testMatch": [
-      "**/__tests__/**/*.[jt]s?(x)",
-      "**/*.(spec|test).[tj]s?(x)]"
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
     ]
+  },
+  "validate-branch-name": {
+    "pattern": "^(master|develop){1}$|^(feature|fix|hotfix|release)/.+$",
+    "errorMsg": "Branch name should start with one of (feature|fix|hotfix|release)/"
   },
   "devDependencies": {
     "@11ty/eleventy": "^0.11.0",
@@ -62,6 +68,8 @@
     "@babel/core": "^7.11.4",
     "@babel/plugin-transform-runtime": "^7.11.0",
     "@babel/preset-env": "^7.11.0",
+    "@commitlint/cli": "^11.0.0",
+    "@commitlint/config-conventional": "^11.0.0",
     "@fullhuman/postcss-purgecss": "^3.0.0",
     "@pragmatics/eleventy-plugin-pwa": "^1.1.3",
     "@pragmatics/eslint-config": "^1.1.3",
@@ -70,11 +78,13 @@
     "autoprefixer": "^10.0.1",
     "babel-eslint": "^10.1.0",
     "babel-loader": "^8.1.0",
+    "contentful": "^7.14.6",
     "critical": "^2.0.3",
     "cross-env": "^7.0.2",
     "cssesc": "^3.0.0",
     "cssnano": "^4.1.10",
     "del-cli": "^3.0.1",
+    "dotenv": "^8.2.0",
     "eslint": "^7.10.0",
     "eslint-plugin-jest": "^24.0.2",
     "focus-trap": "^6.1.0",
@@ -94,6 +104,7 @@
     "prettier": "^2.1.2",
     "stylelint": "^13.7.2",
     "svg-sprite": "^1.5.0",
+    "validate-branch-name": "^1.0.6",
     "webpack": "^4.44.2"
   }
 }

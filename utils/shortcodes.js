@@ -4,11 +4,10 @@ module.exports = {
    * @param {string} name
    * @return {string}
    */
-  icon: (
-    name
-  ) => `<svg class="icon icon--${name}" role="img" aria-hidden="true" width="24" height="24">
-          <use xlink:href="#icon-${name}"></use>
-        </svg>`,
+  icon: (name) => `
+    <svg class="icon icon--${name}" role="img" aria-hidden="true" width="24" height="24">
+      <use xlink:href="#icon-${name}"></use>
+    </svg>`,
 
   /**
    *

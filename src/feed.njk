@@ -11,7 +11,7 @@ eleventyExcludeFromCollections: true
     <author>
         <name>{{ meta.title }}</name>
     </author>
-    {% if collections.posts %}
+    {% if collections.posts and collections.posts.length %}
     <updated>{{ collections.posts | rssLastUpdatedDate }}</updated>
     {% endif %}
     <id>{{ meta.url }}/</id>

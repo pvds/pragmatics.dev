@@ -1,0 +1,21 @@
+---
+pagination:
+  data: collections.posts
+  size: 1
+  alias: post
+  addAllPagesToCollections: false
+layout: post
+tags:
+  - navigation
+permalink: "posts/{{ post.slug | slug }}/"
+eleventyComputed:
+  title: {{ post.title }}
+---
+
+{%- for component in post.components -%}
+  {% if component.sys.contentType.sys.id == "contentBlock" %}
+    {% contentBlock {fields: component.fields, classes: 'margin-top-2'} %}
+      {{ component.fields.content | md | safe }}
+    {% endcontentBlock %}
+  {% endif %}
+{%- endfor -%}
