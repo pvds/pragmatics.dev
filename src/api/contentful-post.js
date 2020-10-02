@@ -1,7 +1,6 @@
-const fs = require('fs');
 const path = require('path');
 const contentful = require('contentful');
-const loadJSON = require('../../utils/json');
+const json = require('../../utils/json');
 
 // This API call will request an entry with the specified ID from the space defined at the top, using a space-specific access token.
 const client = contentful.createClient({
@@ -11,37 +10,30 @@ const client = contentful.createClient({
   accessToken: process.env.CTFL_ACCESSTOKEN,
 });
 
+const formatResponse = (response) =>
+  response.items.map(function (entry) {
+    entry.fields.date = new Date(entry.sys.updatedAt);
+    return entry.fields;
+  });
+
 module.exports = async () => {
-  const localFilePath = path.resolve(__dirname, 'cache', 'posts.json');
+  const cache = path.resolve(__dirname, 'cache', 'posts.json');
 
   // Only make API call if local json file does not exist OR in production environment
-  if (!fs.existsSync(localFilePath) || process.env.ELEVENTY_ENV === 'production') {
+  if (!json.exists(cache) || process.env.ELEVENTY_ENV === 'production') {
     return client
       .getEntries({ content_type: 'post', order: 'sys.createdAt' })
       .then(function (response) {
-        const formattedResponse = response.items.map(function (post) {
-          post.fields.date = new Date(post.sys.updatedAt);
-          return post.fields;
-        });
-
-        // Write response to json file
-        fs.writeFile(localFilePath, JSON.stringify(response), function (err) {
-          if (err) {
-            console.error(err);
-          }
-        });
-
-        return formattedResponse;
+        json.write(cache, JSON.stringify(response));
+        return formatResponse(response);
       })
       .catch(console.error);
   } else {
     // Return local JSON file as a Promise
-    return loadJSON(localFilePath)
+    return json
+      .read(cache)
       .then((response) => {
-        return response.items.map((page) => {
-          page.fields.date = new Date(page.sys.updatedAt);
-          return page.fields;
-        });
+        return formatResponse(response);
       })
       .catch(console.error);
   }
