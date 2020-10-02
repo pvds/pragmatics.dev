@@ -13,8 +13,8 @@ const shortcodes = require('./utils/shortcodes');
 const shortcodesPaired = require('./utils/shortcodes-paired');
 const iconsprite = require('./utils/iconsprite');
 
-const contentfulPages = require('./src/data/contentful-page');
-const contentfulPosts = require('./src/data/contentful-post');
+const contentfulPages = require('./src/api/contentful-page');
+const contentfulPosts = require('./src/api/contentful-post');
 
 const isProd = process.env.ELEVENTY_ENV === 'production';
 
