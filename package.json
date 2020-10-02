@@ -30,7 +30,7 @@
   "scripts": {
     "clean": "del-cli dist",
     "prestart": "yarn clean",
-    "start": "cross-env ELEVENTY_ENV=development eleventy --serve",
+    "start": "eleventy --serve",
     "build": "cross-env ELEVENTY_ENV=production eleventy",
     "build:serve": "cross-env ELEVENTY_ENV=production eleventy --serve",
     "lint": "run-p lint:*",
