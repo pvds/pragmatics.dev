@@ -1,5 +1,5 @@
 const path = require('path');
-const sass = require('node-sass');
+const sass = require('sass');
 const cssesc = require('cssesc');
 const postcss = require('postcss');
 const cssnano = require('cssnano');
