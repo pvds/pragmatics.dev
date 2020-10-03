@@ -10,7 +10,7 @@
 @import '1.settings/global';
 
 /* Use pragmatics sass library */
-@import 'node_modules/@pragmatics/styles/lib/index';
+@import 'node_modules/@pragmatics/styles/lib/index.scss';
 
 /* 2. tools
       reset and/or normalize styles, box-sizing definition
@@ -52,18 +52,22 @@
       reusable modular UI components
    ========================================================================== */
 
+@import '6.components/content-block';
+@import '6.components/content-header';
+@import '6.components/content-section';
 @import '6.components/footer';
 @import '6.components/header';
 @import '6.components/icon';
 @import '6.components/menu-icon';
 @import '6.components/nav';
-@import '6.components/page';
+@import '6.components/post';
 @import '6.components/post-list';
 
 /* 7. templates
       reusable UI templates
    ========================================================================== */
 
+@import '7.templates/content';
 @import '7.templates/layout';
 
 /* 8. utilities

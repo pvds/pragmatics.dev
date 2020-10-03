@@ -1,10 +1,12 @@
 /*  ==========================================================================
-    Post list
+    Content block
     ========================================================================== */
 
-.page {
+.content-block {
+  margin-bottom: grid-unit(4);
+
   &__title {
-    @include text(3xl);
+    @include text(lg);
 
     margin-bottom: grid-unit(1);
   }

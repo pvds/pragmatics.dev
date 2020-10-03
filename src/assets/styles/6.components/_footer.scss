@@ -5,6 +5,8 @@
 .footer {
   @include text(sm);
 
+  position: sticky;
+  bottom: 0;
   padding: grid-unit(2) 0;
   background-color: $color-black-100;
 

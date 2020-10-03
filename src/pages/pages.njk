@@ -12,18 +12,29 @@ eleventyComputed:
   title: {{ page.title }}
 ---
 
-<div class="page container">
-  <h1 class="page__title">{{ page.title }}</h1>
-
-  {%- for component in page.components -%}
-    {% if component.sys.contentType.sys.id == "contentBlock" %}
-      {% contentBlock {fields: component.fields, classes: 'margin-top-2'} %}
-        {{ component.fields.content | md | safe }}
-      {% endcontentBlock %}
-    {% endif %}
-  {%- endfor -%}
-
-  {% if page.slug === "posts" %}
-    {% include "post-list.njk" %}
+<div class="content">
+  {% if page.slug !== "/" %}
+    {% contentSection { classes: 'content-header' }%}
+        <h1 class="content-header__title">{{ page.title }}</h1>
+    {% endcontentSection %}
   {% endif %}
+
+  <div class="content__main">
+    {%- for component in page.components -%}
+      {% if component.sys.contentType.sys.id == "contentBlock" %}
+        {% contentSection { classes: 'margin-bottom-2' }%}
+          {% contentBlock { fields: component.fields } %}
+            {{ component.fields.content | md | safe }}
+          {% endcontentBlock %}
+        {% endcontentSection %}
+      {% endif %}
+    {%- endfor -%}
+
+    {% if page.slug === "posts" %}
+      {% contentSection { classes: 'margin-bottom-2' }%}
+        {% include "post-list.njk" %}
+      {% endcontentSection %}
+    {% endif %}
+  </div>
 </div>
+

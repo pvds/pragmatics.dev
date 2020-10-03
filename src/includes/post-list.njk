@@ -3,7 +3,7 @@
     <li class="post-list__item">
       <h2 class="post-list__title"><a class="link" href="{{ post.slug }}">{{ post.title }}</a></h2>
       <p class="post-list__date">{{ post.date | dateToFormat('d MMMM y - HH:mm') }}</p>
-      <p class="post-list__snippet">{{ post.snippet }}</p>
+      <p class="post-list__snippet">{{ post.excerpt }}</p>
     </li>
   {%- endfor -%}
 </ul>

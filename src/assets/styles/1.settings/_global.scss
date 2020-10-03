@@ -1,3 +1,10 @@
 /* ==========================================================================
    Project-wide settings
    ========================================================================== */
+$color-base-lightness: 9%;
+
+$color-blue: hsl(204, 100%, $color-base-lightness) !default;
+$color-purple: hsl(286, 100%, $color-base-lightness) !default;
+$color-red: hsl(0, 100%, $color-base-lightness) !default;
+$color-orange: hsl(23, 100%, $color-base-lightness) !default;
+$color-green: hsl(104, 81%, $color-base-lightness) !default;

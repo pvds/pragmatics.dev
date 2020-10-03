@@ -3,9 +3,8 @@
     &--active {
       .nav {
         &__link {
-          @include property-states(background-color, $color-black-700);
-
-          color: $color-white;
+          @include property-states(background-color, $color-orange-600);
+          @include property-states(color, inherit, $color-white);
         }
       }
     }
@@ -13,27 +12,33 @@
 
   &__link {
     @include trigger-layout;
-    @include property-states(background-color, inherit, $color-black-100, $color-black-200);
+    @include property-states(background-color, inherit, $color-white);
+    @include property-states(color, inherit, $color-text);
 
     padding: grid-unit(1) grid-unit(2);
   }
 
   &__toggle {
-    @include trigger;
+    @include trigger-layout();
+
+    @include property-states(background-color, inherit, $color-white);
+    @include property-states(color, inherit, $color-text);
   }
 
-  @include mq-down(md) {
+  @include mq-down(sm) {
     &.is-open &__menu {
       display: block;
     }
 
     &__menu {
+      @include container(100%);
+
       position: absolute;
       right: 0;
       left: 0;
       display: none;
-      padding: grid-unit(1) 0 grid-unit(2);
-      background-color: $color-white;
+      padding: grid-unit(1) grid-unit(4) grid-unit(2);
+      background-color: $color-black;
     }
 
     &__item {
@@ -43,7 +48,7 @@
     }
   }
 
-  @include mq(md) {
+  @include mq(sm) {
     &__toggle {
       display: none;
     }

@@ -1,0 +1,16 @@
+/*  ==========================================================================
+    Content header
+    ========================================================================== */
+
+.content-header {
+  padding-top: grid-unit(4);
+  padding-bottom: grid-unit(3);
+  background-color: $color-blue-700;
+  color: $color-white;
+
+  &__title {
+    @include text(3xl);
+
+    margin-bottom: grid-unit(1);
+  }
+}

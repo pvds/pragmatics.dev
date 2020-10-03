@@ -1407,10 +1407,10 @@
     stylelint-order "^4.1.0"
     stylelint-prettier "^1.1.2"
 
-"@pragmatics/styles@^2.2.2":
-  version "2.2.2"
-  resolved "https://registry.yarnpkg.com/@pragmatics/styles/-/styles-2.2.2.tgz#d2fcdcbd9873a3f4e1265552329d5cc363b1b0ef"
-  integrity sha512-8fJzbVObkiYPb7YMZOPO4S66c1xGoEn4Qk8rmhjTCc8zGwAJuba642Y7gfTeN4cKda0EvHJI/4UexRYkRQfH8w==
+"@pragmatics/styles@^2.4.0":
+  version "2.4.0"
+  resolved "https://registry.yarnpkg.com/@pragmatics/styles/-/styles-2.4.0.tgz#1e2bc78526e4f6cda4001772d14445ecf6a59bc5"
+  integrity sha512-7QZLwTdBSsPtC6LZh34CxaBzmgagVaCGgN0/jUu5lwMTMa8B3agJE8tjQL+yypq2zh8N6LF7KkZ9P0Ab+V6vqw==
 
 "@rollup/plugin-node-resolve@^7.1.1":
   version "7.1.3"

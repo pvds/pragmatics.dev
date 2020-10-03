@@ -1,20 +1,11 @@
 /*  ==========================================================================
-    Header
+    Content header
     ========================================================================== */
 
-.header {
-  position: sticky;
-  top: 0;
-  padding: grid-unit(2) 0;
-  background-color: $color-black;
-  color: $color-white;
-
+.content-section {
   &__inner {
     @include container(100%);
 
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
     padding-right: grid-unit(4);
     padding-left: grid-unit(4);
   }

@@ -14,8 +14,10 @@ eleventyComputed:
 
 {%- for component in post.components -%}
   {% if component.sys.contentType.sys.id == "contentBlock" %}
-    {% contentBlock {fields: component.fields, classes: 'margin-top-2'} %}
-      {{ component.fields.content | md | safe }}
-    {% endcontentBlock %}
+    {% contentSection { classes: 'margin-bottom-2' }%}
+      {% contentBlock { fields: component.fields } %}
+        {{ component.fields.content | md | safe }}
+      {% endcontentBlock %}
+    {% endcontentSection %}
   {% endif %}
 {%- endfor -%}
