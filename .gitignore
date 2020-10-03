@@ -4,6 +4,7 @@
 dist
 tmp
 coverage
+src/api/cache/*.*
 
 # package managers
 node_modules/
