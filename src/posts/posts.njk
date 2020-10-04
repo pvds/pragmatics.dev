@@ -4,7 +4,7 @@ pagination:
   size: 1
   alias: post
   addAllPagesToCollections: false
-layout: post
+layout: base
 tags:
   - navigation
 permalink: "posts/{{ post.slug | slug }}/"
@@ -12,12 +12,20 @@ eleventyComputed:
   title: {{ post.title }}
 ---
 
-{%- for component in post.components -%}
-  {% if component.sys.contentType.sys.id == "contentBlock" %}
-    {% contentSection { classes: 'margin-bottom-2' }%}
-      {% contentBlock { fields: component.fields } %}
-        {{ component.fields.content | md | safe }}
-      {% endcontentBlock %}
+<div class="content">
+  <article class="post">
+    {% contentSection { classes: 'content-header' }%}
+      <h1 class="content-header__title">{{ post.title }}</h1>
+      <p class="post__meta">
+        <span class="post__date">{{ post.date | dateToFormat('d MMMM y - HH:mm') }}</span>
+      </p>
+      <p class="post__excerpt">{{ post.excerpt }}</p>
     {% endcontentSection %}
-  {% endif %}
-{%- endfor -%}
+
+    <div class="content__main">
+      {% contentSection { classes: 'plain-text margin-bottom-2' }%}
+        {{ post.content | md | safe }}
+      {% endcontentSection %}
+    </div>
+  </article>
+</div>
