@@ -2,9 +2,20 @@
 layout: base
 ---
 
-{% contentSection { classes: 'content-header' }%}
-<article class="post plain-text">
-    <h1 class="post__title">{{ page.title }}</h1>
-    {{ content | md | safe }}
-</article>
-{% endcontentSection %}
+<div class="content">
+  <article class="post">
+    {% contentSection { classes: 'content-header' }%}
+      <h1 class="content-header__title">{{ post.title }}</h1>
+      <p class="post__meta">
+        <span class="post__date">{{ post.date | dateToFormat('d MMMM y - HH:mm') }}</span>
+      </p>
+      <p class="post__excerpt">{{ post.excerpt }}</p>
+    {% endcontentSection %}
+
+    <div class="content__main">
+      {% contentSection { classes: 'plain-text margin-bottom-2' }%}
+        {{ post.content | md | safe }}
+      {% endcontentSection %}
+    </div>
+  </article>
+</div>
