@@ -19,6 +19,7 @@
     flex: 1 0 auto;
     flex-direction: column;
     padding-bottom: grid-unit(6);
+    background-color: $color-blue-50;
 
     &::after {
       content: '';

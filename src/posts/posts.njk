@@ -16,10 +16,10 @@ eleventyComputed:
   <article class="post">
     {% contentSection { classes: 'content-header' }%}
       <h1 class="content-header__title">{{ post.title }}</h1>
-      <p class="post__meta">
-        <span class="post__date">{{ post.date | dateToFormat('d MMMM y - HH:mm') }}</span>
+      <p class="content-header__meta">
+        <span class="content-header__date">{{ post.date | dateToFormat('d MMMM y - HH:mm') }}</span>
       </p>
-      <p class="post__excerpt">{{ post.excerpt }}</p>
+      <p class="content-header__intro">{{ post.excerpt }}</p>
     {% endcontentSection %}
 
     <div class="content__main">

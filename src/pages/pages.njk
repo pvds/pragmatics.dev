@@ -15,10 +15,12 @@ eleventyComputed:
 <div class="content">
   {% if page.slug !== "/" or page.intro !== '' %}
     {% contentSection { classes: 'content-header' }%}
-        {% if page.slug !== "/" %}
-          <h1 class="content-header__title">{{ page.title }}</h1>
-        {% endif %}
-        <p>{{ page.intro | md | safe }}</p>
+      {% if page.slug !== "/" %}
+        <h1 class="content-header__title">{{ page.title }}</h1>
+      {% endif %}
+      {% if page.intro %}
+      <p class="content-header__intro">{{ page.intro | md | safe }}</p>
+      {% endif %}
     {% endcontentSection %}
   {% endif %}
 

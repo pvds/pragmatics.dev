@@ -3,7 +3,7 @@
     &--active {
       .nav {
         &__link {
-          @include property-states(background-color, $color-orange-600);
+          @include property-states(background-color, $color-blue-900);
           @include property-states(color, inherit, $color-white);
         }
       }
@@ -12,8 +12,8 @@
 
   &__link {
     @include trigger-layout;
-    @include property-states(background-color, inherit, $color-white);
-    @include property-states(color, inherit, $color-text);
+    @include property-states(background-color, inherit, $color-white, $color-blue-200);
+    @include property-states(color, inherit, $color-blue, $color-blue);
 
     padding: grid-unit(1) grid-unit(2);
   }
@@ -21,8 +21,8 @@
   &__toggle {
     @include trigger-layout();
 
-    @include property-states(background-color, inherit, $color-white);
-    @include property-states(color, inherit, $color-text);
+    @include property-states(background-color, inherit, $color-white, $color-blue-200);
+    @include property-states(color, inherit, $color-blue, $color-blue);
   }
 
   @include mq-down(sm) {
@@ -34,11 +34,11 @@
       @include container(100%);
 
       position: absolute;
-      right: 0;
       left: 0;
       display: none;
       padding: grid-unit(1) grid-unit(4) grid-unit(2);
-      background-color: $color-black;
+      background-color: $color-blue;
+      transform: translateY(grid-unit(2));
     }
 
     &__item {

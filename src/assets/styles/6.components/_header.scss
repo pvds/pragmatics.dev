@@ -6,7 +6,8 @@
   position: sticky;
   top: 0;
   padding: grid-unit(2) 0;
-  background-color: $color-black;
+  font-weight: $font-weight-semibold;
+  background-color: $color-blue;
   color: $color-white;
 
   &__inner {

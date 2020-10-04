@@ -1,0 +1,19 @@
+pre {
+  padding: grid-unit(2);
+}
+
+pre,
+code {
+  background-color: $color-blue-100;
+  color: $color-blue-900;
+}
+
+blockquote {
+  @include border-right-radius(grid-unit(1));
+  @include border-left-radius(0.2rem);
+  @include text(md);
+
+  padding: grid-unit(2);
+  border-color: $color-blue-800;
+  background-color: $color-white;
+}

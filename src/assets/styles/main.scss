@@ -40,6 +40,8 @@
       styling for bare HTML elements
    ========================================================================== */
 
+@import '4.elements/base';
+
 /* 5. classes
       class-based selectors which define design patterns
    ========================================================================== */
@@ -55,12 +57,13 @@
 @import '6.components/content-block';
 @import '6.components/content-header';
 @import '6.components/content-section';
+@import '6.components/feature';
+@import '6.components/features';
 @import '6.components/footer';
 @import '6.components/header';
 @import '6.components/icon';
 @import '6.components/menu-icon';
 @import '6.components/nav';
-@import '6.components/post';
 @import '6.components/post-list';
 
 /* 7. templates

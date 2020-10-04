@@ -3,14 +3,27 @@
     ========================================================================== */
 
 .content-header {
-  padding-top: grid-unit(4);
+  padding-top: grid-unit(3);
   padding-bottom: grid-unit(3);
-  background-color: $color-blue-700;
-  color: $color-white;
+  background-color: $color-blue-200;
+  color: $color-blue;
 
   &__title {
     @include text(3xl);
 
-    margin-bottom: grid-unit(1);
+    &:not(:last-child) {
+      margin-bottom: grid-unit(1);
+    }
+  }
+
+  &__meta {
+    @include text(sm);
+
+    margin-bottom: grid-unit(2);
+    color: rgba($color-blue, $color-opacity-medium);
+  }
+
+  &__intro {
+    @include text(md);
   }
 }
