@@ -89,14 +89,13 @@ module.exports = class {
    * @return {Promise}
    */
   async optimize(css) {
-    if (!isProd) {
-      return css;
-    }
-    return await postcss([cssnano(cssNanoConfig), purgecss(purgecssConfig), autoprefixer])
-      .process(css, { from: undefined })
-      .then((result) => {
-        return result.css;
-      });
+    return !isProd
+      ? css
+      : await postcss([cssnano(cssNanoConfig), purgecss(purgecssConfig), autoprefixer])
+          .process(css, { from: undefined })
+          .then((result) => {
+            return result.css;
+          });
   }
 
   /**
