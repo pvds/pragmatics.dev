@@ -3,9 +3,7 @@ const critical = require('critical');
 const buildDir = 'dist';
 
 const shouldTransformHTML = (outputPath) => outputPath && outputPath.endsWith('.html');
-
 const isProd = process.env.ELEVENTY_ENV === 'production';
-
 const isHomePage = (outputPath) => outputPath === `${buildDir}/index.html`;
 
 process.setMaxListeners(Infinity);
@@ -17,14 +15,13 @@ module.exports = {
    * @return {string}
    */
   htmlmin: function (content, outputPath) {
-    if (shouldTransformHTML(outputPath)) {
-      return htmlmin.minify(content, {
-        useShortDoctype: true,
-        removeComments: true,
-        collapseWhitespace: true,
-      });
-    }
-    return content;
+    return shouldTransformHTML(outputPath)
+      ? htmlmin.minify(content, {
+          useShortDoctype: true,
+          removeComments: true,
+          collapseWhitespace: true,
+        })
+      : content;
   },
 
   /**

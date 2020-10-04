@@ -22,8 +22,6 @@ eleventyComputed:
     {% endcontentSection %}
   {% endif %}
 
-
-
   <div class="content__main">
     {% set features = page.components | componentsOfType('feature') %}
     {% if features | length %}

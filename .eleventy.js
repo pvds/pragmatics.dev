@@ -40,9 +40,9 @@ module.exports = function (config) {
     config.addFilter(filterName, filters[filterName]);
   });
 
-  config.addFilter('md', function (content = '') {
-    return markdownIt(markdownItConfig).use(markdownItImsize).render(content);
-  });
+  config.addFilter('md', (content = '') =>
+    markdownIt(markdownItConfig).use(markdownItImsize).render(content)
+  );
 
   // Transforms
   Object.keys(transforms).forEach((transformName) => {

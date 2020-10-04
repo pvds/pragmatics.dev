@@ -51,7 +51,7 @@ module.exports = async () => {
   const files = await getFiles('**/*.svg', { cwd: cwd });
 
   // Add them all to the spriter
-  files.forEach(function (file) {
+  files.forEach((file) => {
     spriter.add(
       new File({
         path: path.join(cwd, file),
