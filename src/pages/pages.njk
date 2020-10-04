@@ -13,21 +13,53 @@ eleventyComputed:
 ---
 
 <div class="content">
-  {% if page.slug !== "/" %}
+  {% if page.slug !== "/" or page.intro !== '' %}
     {% contentSection { classes: 'content-header' }%}
-        <h1 class="content-header__title">{{ page.title }}</h1>
+        {% if page.slug !== "/" %}
+          <h1 class="content-header__title">{{ page.title }}</h1>
+        {% endif %}
+        <p>{{ page.intro | md | safe }}</p>
     {% endcontentSection %}
   {% endif %}
 
+
+
   <div class="content__main">
-    {%- for component in page.components -%}
-      {% if component.sys.contentType.sys.id == "contentBlock" %}
-        {% contentSection { classes: 'margin-bottom-2' }%}
-          {% contentBlock { fields: component.fields } %}
-            {{ component.fields.content | md | safe }}
-          {% endcontentBlock %}
-        {% endcontentSection %}
-      {% endif %}
+    {% set features = page.components | componentsOfType('feature') %}
+    {% if features | length %}
+    {% contentSection { classes: 'margin-bottom-2' }%}
+    <div class="features">
+      <h2 class="features__title">
+        Features
+      </h2>
+      <div class="features__list">
+        {%- for feature in features -%}
+            <div class="feature">
+              <div class="feature__header">
+                <h3 class="feature__title">{{ feature.fields.title }}</h3>
+                <p class="feature__subtitle">{{ feature.fields.subtitle }}</p>
+              </div>
+              <div class="feature__main">
+                <ol class="feature__list">
+                  {%- for item in feature.fields.list -%}
+                    <li class="feature__list-item">{{ item }}</li>
+                  {% endfor %}
+                </ol>
+              </div>
+            </div>
+        {%- endfor -%}
+      </div>
+    </div>
+    {% endcontentSection %}
+    {% endif %}
+
+    {% set contentComponents = page.components | componentsOfType('content') %}
+    {%- for content in contentComponents -%}
+      {% contentSection { classes: 'margin-bottom-2' }%}
+        {% contentBlock { fields: content.fields } %}
+          {{ content.fields.content | md | safe }}
+        {% endcontentBlock %}
+      {% endcontentSection %}
     {%- endfor -%}
 
     {% if page.slug === "posts" %}
@@ -37,4 +69,3 @@ eleventyComputed:
     {% endif %}
   </div>
 </div>
-
