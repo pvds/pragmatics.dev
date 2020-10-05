@@ -4,16 +4,15 @@ pre {
 
 pre,
 code {
-  background-color: $color-blue-100;
-  color: $color-blue-900;
+  background-color: $color-white;
+  color: $color-blue;
 }
 
 blockquote {
-  @include border-right-radius(grid-unit(1));
-  @include border-left-radius(0.2rem);
   @include text(md);
 
   padding: grid-unit(2);
-  border-color: $color-blue-800;
-  background-color: $color-white;
+  border-color: $color-white;
+  background-color: transparent;
+  color: $color-white;
 }

@@ -1,0 +1,17 @@
+.snackbar {
+  background-color: $color-white;
+
+  &__cta {
+    @include property-states(background-color, $color-blue, $color-blue-900, $color-blue-900);
+
+    color: $color-white;
+  }
+
+  &__text {
+    color: $color-blue;
+  }
+
+  &__dismiss {
+    fill: $color-blue;
+  }
+}

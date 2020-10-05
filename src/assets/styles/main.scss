@@ -28,6 +28,8 @@
  * variables
  */
 
+@import '2.tools/variables/base/color';
+
 /* base - declared first so they can be used in other variable partials */
 
 /* utilities */
@@ -49,6 +51,7 @@
 /* objects - undecorated patterns */
 
 /* helpers - decorated patterns */
+@import '5.classes/helpers/plain-text';
 
 /* 6. components
       reusable modular UI components
@@ -62,9 +65,11 @@
 @import '6.components/footer';
 @import '6.components/header';
 @import '6.components/icon';
+@import '6.components/link';
 @import '6.components/menu-icon';
 @import '6.components/nav';
 @import '6.components/post-list';
+@import '6.components/snackbar';
 
 /* 7. templates
       reusable UI templates

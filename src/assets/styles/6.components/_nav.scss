@@ -21,12 +21,7 @@
   &__toggle {
     @include trigger-layout();
 
-    @include property-states(
-      background-color,
-      inherit,
-      $color-white,
-      rgba($color-blue-400, $color-opacity-medium)
-    );
+    @include property-states(background-color, inherit, $color-white, $color-white);
     @include property-states(color, inherit, $color-blue, $color-blue);
   }
 

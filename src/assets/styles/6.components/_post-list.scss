@@ -9,16 +9,29 @@
     }
   }
 
-  &__title {
-    @include text(lg);
+  &__link {
+    display: block;
+    padding: grid-unit(3);
+    border: 2px solid transparent;
+    border-radius: $border-radius;
+    background-color: rgba($color-blue-800, $color-opacity-low);
 
-    margin-bottom: grid-unit(1);
+    &:hover {
+      border-color: $color-white;
+    }
+  }
+
+  &__title {
+    @include text(xl);
+
+    margin-bottom: grid-unit(0.5);
+    font-weight: $font-weight-semibold;
   }
 
   &__date {
     @include text(sm);
 
-    margin-bottom: grid-unit(0.5);
-    color: $color-text-soft;
+    margin-bottom: grid-unit(1);
+    color: rgba($color-white, $color-opacity-medium);
   }
 }

@@ -4,13 +4,16 @@
 
     margin-bottom: grid-unit(3);
     font-weight: $font-weight-bold;
-    color: $color-blue-900;
+    color: $color-white;
   }
 
   &__list {
     display: grid;
     grid-template-rows: repeat(2, auto);
-    grid-template-columns: repeat(auto-fit, minmax(grid-unit(40), 1fr));
     grid-gap: grid-unit(2);
+
+    @include mq-up(sm) {
+      grid-template-columns: repeat(auto-fit, minmax(grid-unit(40), 1fr));
+    }
   }
 }

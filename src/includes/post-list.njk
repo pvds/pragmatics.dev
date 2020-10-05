@@ -1,9 +1,11 @@
 <ul class="post-list">
   {%- for post in collections.posts | reverse -%}
     <li class="post-list__item">
-      <h2 class="post-list__title"><a class="link" href="{{ post.slug }}">{{ post.title }}</a></h2>
-      <p class="post-list__date">{{ post.date | dateToFormat('d MMMM y - HH:mm') }}</p>
-      <p class="post-list__snippet">{{ post.excerpt }}</p>
+      <a class="post-list__link" href="{{ post.slug }}">
+        <h2 class="post-list__title">{{ post.title }}</h2>
+        <p class="post-list__date">{{ post.date | dateToFormat('d MMMM y - HH:mm') }}</p>
+        <p class="post-list__snippet">{{ post.excerpt }}</p>
+      </a>
     </li>
   {%- endfor -%}
 </ul>
