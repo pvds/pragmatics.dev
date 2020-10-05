@@ -2,7 +2,7 @@
   $feature_padding: grid-unit(3);
 
   border-radius: $border-radius;
-  background-color: rgba($color-blue-800, $color-opacity-low);
+  background-color: rgba($color-blue-850, $color-opacity-low);
 
   @supports (grid-template-rows: subgrid) {
     display: grid;
