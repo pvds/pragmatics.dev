@@ -25,33 +25,36 @@ eleventyComputed:
   {% endif %}
 
   <div class="content__main">
-    {% set features = page.components | componentsOfType('feature') %}
+    {% set featureSections = ['tools', 'techniques'] %}
+    {% for featureSection in featureSections %}
+    {% set features = page.components | featuresOfCategory(featureSection) %}
     {% if features | length %}
-    {% contentSection { classes: 'margin-bottom-2' }%}
-    <div class="features">
-      <h2 class="features__title">
-        Features
-      </h2>
-      <div class="features__list">
-        {%- for feature in features -%}
-            <div class="feature">
-              <div class="feature__header">
-                <h3 class="feature__title">{{ feature.fields.title }}</h3>
-                <p class="feature__subtitle">{{ feature.fields.subtitle }}</p>
+      {% contentSection { classes: 'margin-bottom-6' }%}
+        <div class="features">
+          <h2 class="features__title">
+            {{ featureSection | capitalize }}
+          </h2>
+          <div class="features__list">
+            {%- for feature in features -%}
+              <div class="feature">
+                <div class="feature__header">
+                  <h3 class="feature__title">{{ feature.fields.title }}</h3>
+                  <p class="feature__subtitle">{{ feature.fields.subtitle }}</p>
+                </div>
+                <div class="feature__main">
+                  <ol class="feature__list">
+                    {%- for item in feature.fields.list -%}
+                      <li class="feature__list-item">{{ item }}</li>
+                    {% endfor %}
+                  </ol>
+                </div>
               </div>
-              <div class="feature__main">
-                <ol class="feature__list">
-                  {%- for item in feature.fields.list -%}
-                    <li class="feature__list-item">{{ item }}</li>
-                  {% endfor %}
-                </ol>
-              </div>
-            </div>
-        {%- endfor -%}
-      </div>
-    </div>
-    {% endcontentSection %}
+            {%- endfor -%}
+          </div>
+        </div>
+      {% endcontentSection %}
     {% endif %}
+    {% endfor %}
 
     {% set contentComponents = page.components | componentsOfType('content') %}
     {%- for content in contentComponents -%}

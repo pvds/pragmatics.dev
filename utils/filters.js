@@ -50,4 +50,24 @@ module.exports = {
 
     return filtered;
   },
+
+  /**
+   * Check whether entry has features of a specific category
+   * @param {Array} components
+   * @param {string} category
+   * @return {[]}
+   */
+  featuresOfCategory: (components, category) => {
+    let filtered = [];
+    filtered = components?.filter(function (component) {
+      if (
+        component.sys.contentType.sys.id === 'feature' &&
+        component.fields.category === category
+      ) {
+        return component;
+      }
+    });
+
+    return filtered;
+  },
 };
