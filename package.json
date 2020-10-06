@@ -28,8 +28,8 @@
     "defaults"
   ],
   "engines": {
-    "node": ">=14.13.0",
-    "yarn": ">=1.22.x"
+    "node": "14.x",
+    "yarn": "1.22.x"
   },
   "scripts": {
     "clean": "del-cli dist",
