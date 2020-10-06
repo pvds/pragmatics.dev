@@ -23,9 +23,14 @@ class Navigation {
 
     this.nav = document.querySelector(SELECTORS.nav);
     this.toggleBtn = this.nav.querySelector(SELECTORS.toggleBtn);
-    this.focusTrap = createFocusTrap(this.nav);
+    this.focusTrap = createFocusTrap(this.nav, { allowOutsideClick: true });
 
     this.toggleBtn.addEventListener('click', () => this.toggleMenu());
+    this.close = this.toggleMenu(false);
+
+    this.clickOutsideMenu = (e) => {
+      if (!this.nav.contains(e.target)) return this.toggleMenu(false);
+    };
   }
 
   /**
@@ -40,8 +45,10 @@ class Navigation {
 
     if (this.isOpen) {
       this.focusTrap.activate();
+      window.addEventListener('click', this.clickOutsideMenu, true);
     } else {
       this.focusTrap.deactivate();
+      window.removeEventListener('click', this.clickOutsideMenu, true);
     }
   }
 }
